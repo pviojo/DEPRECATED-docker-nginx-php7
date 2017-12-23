@@ -1,0 +1,28 @@
+version: '2'
+services:
+  # web server
+  nginx:
+    image: nginx:latest
+    ports:
+    # Allow client to access 80 through 8080
+      - "8080:80"
+    volumes:
+    # app code
+      - ./src:/usr/share/nginx/html
+    # nginx configs
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/:ro
+    links:
+      - fpm:fpm
+
+  # php-fpm
+  fpm:
+    build: ./docker/php-fpm
+    working_dir: /usr/share/nginx/html
+    ports:
+      - "9000"
+    volumes:
+    # app code
+      - ./src:/usr/share/nginx/html
+    # Your php.ini
+      - ./docker/php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
