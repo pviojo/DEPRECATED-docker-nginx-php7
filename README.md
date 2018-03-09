@@ -22,7 +22,7 @@ Enjoy
 
 * Nginx port can be changed in docker-compose.yml
 * Nginx configuration in docker/nginx/conf.d/default.conf
-* PHP configuration in docker/php-fpm/php.ini (or docker/php-fpm/php.ini-production)
+* PHP configuration in docker/php-fpm/php.ini (or docker/php-fpm/php.ini-production if you want to deploy in prod)
 
 It comes with some PHP extensions installed. See docker/php-fpm/Dockerfile for details
 
@@ -40,9 +40,16 @@ docker-compose up -d
 docker-compose build
 ```
 
+## Access the container (install laravel or whatever you need to do)
+
+```
+docker-compose run fpm bash
+```
+
+
 ## Authors
 
-* Pablo Viojo, [pviojo@gmail.com](mailto:pviojo@grouponlatam.com), [https://tiopaul.io](https://tiopaul.io)
+* Pablo Viojo, [pablo@tiopaul.io](mailto:pablo@tiopaul.io), [https://tiopaul.io](https://tiopaul.io)
 
 ## License
 
