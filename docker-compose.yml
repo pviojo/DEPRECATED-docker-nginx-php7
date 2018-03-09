@@ -25,4 +25,4 @@ services:
     # app code
       - ./src:/usr/share/nginx/html
     # Your php.ini
-      - ./docker/php-fpm/php.ini-production:/usr/local/etc/php/php.ini:ro
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/php.ini:ro
